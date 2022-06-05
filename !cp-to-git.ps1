@@ -1,1 +1,1 @@
-Copy-Item ".\build\web\*" "D:\git\next_cc\" -Force -Recurse 
+Copy-Item ".\build\web\*" ".\docs\" -Force -Recurse 
