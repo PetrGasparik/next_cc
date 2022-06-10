@@ -1,1 +1,0 @@
-Copy-Item ".\build\web\*" ".\docs\" -Force -Recurse 
