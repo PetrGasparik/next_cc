@@ -13,7 +13,9 @@ class _PlayCCState extends State<PlayCC> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Let\'s rock!'),
+        backgroundColor: Colors.grey[800],
       ),
+      backgroundColor: Colors.black,
     );
   }
 }

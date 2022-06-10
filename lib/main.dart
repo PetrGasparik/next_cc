@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       title: 'Next CC',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
         ),
       ),
       home: const Home(),
@@ -30,6 +30,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -41,9 +42,9 @@ class Home extends StatelessWidget {
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: <Color>[
-                          Color.fromARGB(255, 13, 161, 33),
-                          Color.fromARGB(255, 25, 210, 56),
-                          Color.fromARGB(255, 66, 245, 81),
+                          Colors.black,
+                          Colors.grey,
+                          Colors.black,
                         ],
                       ),
                     ),
@@ -71,9 +72,9 @@ class Home extends StatelessWidget {
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: <Color>[
-                          Color(0xFF0D47A1),
-                          Color(0xFF1976D2),
-                          Color(0xFF42A5F5),
+                          Colors.black,
+                          Colors.grey,
+                          Colors.black,
                         ],
                       ),
                     ),
