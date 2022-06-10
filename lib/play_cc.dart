@@ -16,6 +16,19 @@ class _PlayCCState extends State<PlayCC> {
         backgroundColor: Colors.grey[800],
       ),
       backgroundColor: Colors.black,
+      body: Center(
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            TextButton(
+              onPressed: () {
+                ;
+              },
+              child: const Text('Loot'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
