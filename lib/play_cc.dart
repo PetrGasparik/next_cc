@@ -9,11 +9,29 @@ class PlayCC extends StatefulWidget {
 
 class _PlayCCState extends State<PlayCC> {
   bool showLootBoxes = false;
+  Map<String, int> components = {};
 
-  handleLoot() {
+  showLoot() {
     setState(() {
-      showLootBoxes = !showLootBoxes;
+      showLootBoxes = true;
     });
+  }
+
+  getLoot(String componentId) {
+    int? pieces = components[componentId];
+    setState(() {
+      components[componentId] = pieces == null ? 1 : pieces + 1;
+      showLootBoxes = false;
+    });
+    debugPrint(components.toString());
+  }
+
+  String printInventory() {
+    String inventoryString = "";
+    components.forEach((key, value) {
+      inventoryString += "$key: $value | ";
+    });
+    return "Inventory | $inventoryString";
   }
 
   @override
@@ -23,7 +41,7 @@ class _PlayCCState extends State<PlayCC> {
         title: const Text('Let\'s rock!'),
         backgroundColor: Colors.grey[800],
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey[500],
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -34,7 +52,7 @@ class _PlayCCState extends State<PlayCC> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   TextButton(
-                    onPressed: handleLoot,
+                    onPressed: showLoot,
                     child: const Text('Loot!'),
                   ),
                 ],
@@ -46,18 +64,23 @@ class _PlayCCState extends State<PlayCC> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   TextButton(
-                    onPressed: handleLoot,
+                    onPressed: getLoot('Component 1'),
                     child: const Text('Component 1'),
                   ),
                   TextButton(
-                    onPressed: handleLoot,
+                    onPressed: getLoot('Component 2'),
                     child: const Text('Component 2'),
                   ),
                   TextButton(
-                    onPressed: handleLoot,
+                    onPressed: getLoot('Component 3'),
                     child: const Text('Component 3'),
                   ),
                 ],
+              ),
+            ),
+            Text.rich(
+              TextSpan(
+                text: printInventory(), // default text style
               ),
             ),
           ],
