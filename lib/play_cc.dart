@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+
+var rng = Random();
 
 class PlayCC extends StatefulWidget {
   const PlayCC({Key? key}) : super(key: key);
@@ -63,18 +67,9 @@ class _PlayCCState extends State<PlayCC> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  TextButton(
-                    onPressed: getLoot('Component 1'),
-                    child: const Text('Component 1'),
-                  ),
-                  TextButton(
-                    onPressed: getLoot('Component 2'),
-                    child: const Text('Component 2'),
-                  ),
-                  TextButton(
-                    onPressed: getLoot('Component 3'),
-                    child: const Text('Component 3'),
-                  ),
+                  displayComponent(),
+                  displayComponent(),
+                  displayComponent(),
                 ],
               ),
             ),
@@ -86,6 +81,15 @@ class _PlayCCState extends State<PlayCC> {
           ],
         ),
       ),
+    );
+  }
+
+  TextButton displayComponent() {
+    var componentId = rng.nextInt(10) + 1;
+    var componentName = 'Component $componentId';
+    return TextButton(
+      onPressed: () => getLoot(componentName),
+      child: Text(componentName),
     );
   }
 }
