@@ -30,14 +30,6 @@ class _PlayCCState extends State<PlayCC> {
     debugPrint(components.toString());
   }
 
-  String printInventory() {
-    String inventoryString = "";
-    components.forEach((key, value) {
-      inventoryString += "$key: $value | ";
-    });
-    return "Inventory | $inventoryString";
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,22 +58,44 @@ class _PlayCCState extends State<PlayCC> {
               visible: showLootBoxes,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  displayComponent(),
-                  displayComponent(),
-                  displayComponent(),
-                ],
+                children: displayLoot(),
               ),
             ),
-            Text.rich(
-              TextSpan(
-                text: printInventory(), // default text style
-              ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: displayInventory(),
             ),
           ],
         ),
       ),
     );
+  }
+
+  List<Widget> displayLoot() {
+    var nrOfLoot = rng.nextInt(3) + 1;
+    return List<Widget>.filled(nrOfLoot, displayComponent());
+  }
+
+  String printInventory() {
+    String inventoryString = "";
+    components.forEach((key, value) {
+      inventoryString += "$key: $value | ";
+    });
+    return "Inventory | $inventoryString";
+  }
+
+  List<Widget> displayInventory() {
+    List<Widget> inventory =
+        List<Widget>.filled(components.length, const Text(''));
+    int i = 0;
+    components.forEach((key, value) {
+      inventory[i++] = Text.rich(
+        TextSpan(
+          text: "component $key: $value pcs",
+        ),
+      );
+    });
+    return inventory;
   }
 
   TextButton displayComponent() {
